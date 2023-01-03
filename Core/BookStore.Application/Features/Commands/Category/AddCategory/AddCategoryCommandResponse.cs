@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.Application.Features.Commands.Category.AddCategory
 {
-    public class AddCategoryCommandResponse
+    public class AddCategoryCommandResponse : ApiResponse<object>
     {
-        
+
     }
 }

@@ -20,9 +20,9 @@ namespace BookStore.Domain.Entities
         public double DemageFactor { get; set; }
         public HealthState HealthState { get; set; }
 
-        public Guid BookId { get; set; }
+        public Guid? BookId { get; set; }
         public Book Book { get; set; }
-        public Guid PublisherId { get; set; }
+        public Guid? PublisherId { get; set; }
         public Publisher Publisher { get; set; }
         public ICollection<BookImageFile> BookImages { get; set; }
         public ICollection<Translator> Translators { get; set; }

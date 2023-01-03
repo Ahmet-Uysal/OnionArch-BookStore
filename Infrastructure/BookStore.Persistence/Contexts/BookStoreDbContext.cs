@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Persistence.Contexts
 {
-    public class BookStoreDbContext : IdentityDbContext<User, Role, string>
+    public class BookStoreDbContext : IdentityDbContext<User, Role, Guid>
     {
         public BookStoreDbContext(DbContextOptions options) : base(options)
         {
@@ -34,7 +34,11 @@ namespace BookStore.Persistence.Contexts
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Translator> Translators { get; set; }
         public DbSet<UserBookStockKeepUnit> UserBookSKUs { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
 
+        }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var entries = ChangeTracker.Entries<BaseEntity>();

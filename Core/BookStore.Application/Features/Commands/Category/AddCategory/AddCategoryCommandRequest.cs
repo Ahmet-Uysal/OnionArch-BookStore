@@ -8,7 +8,7 @@ namespace BookStore.Application.Features.Commands.Category.AddCategory
 {
     public class AddCategoryCommandRequest : IRequest<AddCategoryCommandResponse>
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
     }
 }

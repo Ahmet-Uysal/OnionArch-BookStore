@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using BookStore.Domain.Entities.Common;
@@ -15,7 +16,10 @@ namespace BookStore.Domain.Entities
         public int Delay { get; set; }
         public double Fine { get; set; }
         public HealthState HealtState { get; set; }
+        public Guid? BookStockKeepUnitId { get; set; }
         public BookStockKeepUnit Book { get; set; }
+        public Guid? UserId { get; set; }
+        // [ForeignKey("UserId")]
         public virtual User User { get; set; }
     }
 }
