@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStore.Persistence.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    [Migration("20230103173829_Mg_1")]
+    [Migration("20230103222608_Mg_1")]
     partial class Mg1
     {
         /// <inheritdoc />
@@ -164,7 +164,7 @@ namespace BookStore.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("BookId")
+                    b.Property<Guid?>("BookId")
                         .HasColumnType("char(36)");
 
                     b.Property<double>("BuyingPrice")
@@ -203,7 +203,7 @@ namespace BookStore.Persistence.Migrations
                     b.Property<DateTime>("PublishDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("PublisherId")
+                    b.Property<Guid?>("PublisherId")
                         .HasColumnType("char(36)");
 
                     b.Property<int>("Size")
@@ -284,7 +284,7 @@ namespace BookStore.Persistence.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<Guid>("MenuId")
+                    b.Property<Guid?>("MenuId")
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("ModifyDate")
@@ -772,15 +772,11 @@ namespace BookStore.Persistence.Migrations
                 {
                     b.HasOne("BookStore.Domain.Entities.Book", "Book")
                         .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BookId");
 
                     b.HasOne("BookStore.Domain.Entities.Publisher", "Publisher")
                         .WithMany()
-                        .HasForeignKey("PublisherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PublisherId");
 
                     b.Navigation("Book");
 
@@ -800,9 +796,7 @@ namespace BookStore.Persistence.Migrations
                 {
                     b.HasOne("BookStore.Domain.Entities.Menu", "Menu")
                         .WithMany("Endpoints")
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MenuId");
 
                     b.Navigation("Menu");
                 });

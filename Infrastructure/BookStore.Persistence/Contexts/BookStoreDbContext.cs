@@ -37,7 +37,17 @@ namespace BookStore.Persistence.Contexts
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
+            // builder.Entity<Category>()
+            // .HasOne(s => s.Parent)
+            // .WithMany(m => m.SubCategories)
+            // .HasForeignKey(e => e.ParentId).IsRequired(false);
+            //builder.Entity<Category>().has(m => m.Parent).WithMany(m => m.Children);
+            builder.Entity<Category>(category =>
+            {
+                category.HasMany(c => c.SubCategories)
+                .WithOne(c => c.Parent)
+                .HasForeignKey(c => c.ParentId).IsRequired(false);
+            });
         }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

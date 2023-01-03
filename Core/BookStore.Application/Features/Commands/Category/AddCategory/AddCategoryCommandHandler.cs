@@ -19,6 +19,7 @@ namespace BookStore.Application.Features.Commands.Category.AddCategory
         public async Task<AddCategoryCommandResponse> Handle(AddCategoryCommandRequest request, CancellationToken cancellationToken)
         {
             var category = new C.Category();
+            category.ParentId = request.ParentId;
             category.Name = request.Name;
             await _categoryWriteRepository.AddAsync(category);
             await _categoryWriteRepository.SaveAsync();

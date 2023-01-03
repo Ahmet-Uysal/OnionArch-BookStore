@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using BookStore.Application.Features.Commands.Category.AddCategory;
 using BookStore.Application.Features.Queries.Category.GetCategories;
+using BookStore.Application.Features.Queries.Category.GetCategoriesWithSub;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,14 @@ namespace BookStore.Api.Controllers
             // throw new Exception("patladı");
             // await _mediator.Send(createProductCommandRequest);
             return Ok(await _mediator.Send(new GetCategoriesQueryRequest()));
+        }
+        [HttpGet("[action]")]
+        // [Route("[action]")]
+        public async Task<IActionResult> GetAllCategoriesWithSub()
+        {
+            // throw new Exception("patladı");
+            // await _mediator.Send(createProductCommandRequest);
+            return Ok(await _mediator.Send(new GetCategoriesWithSubQueryRequest()));
         }
     }
 }
