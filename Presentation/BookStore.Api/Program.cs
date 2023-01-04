@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using BookStore.Api.Extensions;
 using BookStore.Application;
 using BookStore.Application.Validations;
@@ -12,15 +13,15 @@ var builder = WebApplication.CreateBuilder(args);
 // builder.Services.AddControllers();
 builder.Services.AddControllers(opt => opt.Filters.Add<ValidationFilter>())
     .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<AddCategoryValidator>())
-        .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true).AddNewtonsoftJson(options =>
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-);
+        .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true).AddJsonOptions(option =>
+           option.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceServices();
-builder.Services.AddApplicationServices();
+
 builder.Services.AddInfrastructureServices();
+builder.Services.AddApplicationServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

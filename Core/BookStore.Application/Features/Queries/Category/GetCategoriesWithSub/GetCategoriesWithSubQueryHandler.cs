@@ -23,11 +23,10 @@ namespace BookStore.Application.Features.Queries.Category.GetCategoriesWithSub
 
         public async Task<GetCategoriesWithSubQueryResponse> Handle(GetCategoriesWithSubQueryRequest request, CancellationToken cancellationToken)
         {
-            var list = _categoryReadRepository.GetAll().Include(x => x.SubCategories).Where(x => x.ParentId == null).ToList();
             return new GetCategoriesWithSubQueryResponse
             {
                 IsSuccess = true,
-                Data = _mapper.Map<List<GetCategoriesDto>>(_categoryReadRepository.GetAll().Include(x => x.SubCategories)),
+                Data = _mapper.Map<List<GetCategoriesDto>>(_categoryReadRepository.GetAll().Include(x => x.SubCategories).ToList().Where(x => x.ParentId == null)),
                 Message = null
             };
         }

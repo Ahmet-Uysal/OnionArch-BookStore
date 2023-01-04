@@ -12,7 +12,7 @@ namespace BookStore.Application
     {
         public static void AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(typeof(ServiceRegistration));
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
         }
     }

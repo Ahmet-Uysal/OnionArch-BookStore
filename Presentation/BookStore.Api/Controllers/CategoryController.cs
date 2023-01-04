@@ -36,11 +36,7 @@ namespace BookStore.Api.Controllers
         }
         [HttpGet("[action]")]
         // [Route("[action]")]
-        public async Task<IActionResult> GetAllCategoriesWithSub()
-        {
-            // throw new Exception("patladı");
-            // await _mediator.Send(createProductCommandRequest);
-            return Ok(await _mediator.Send(new GetCategoriesWithSubQueryRequest()));
-        }
+        public async Task<IActionResult> GetAllCategoriesWithSub() => Ok(await _mediator.Send(new GetCategoriesWithSubQueryRequest()));
+
     }
 }
