@@ -12,7 +12,7 @@ namespace BookStore.Application.Dtos.Category
         public string Name { get; set; }
         public Guid? ParentId { get; set; }
 
-        public virtual C.Category Parent { get; set; }
+        public C.Category Parent { get; set; }
         public ICollection<C.Category> SubCategories { get; set; }
     }
 }

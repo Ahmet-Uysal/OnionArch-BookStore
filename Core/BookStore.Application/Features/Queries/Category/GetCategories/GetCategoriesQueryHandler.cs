@@ -6,6 +6,7 @@ using AutoMapper;
 using BookStore.Application.Dtos.Category;
 using BookStore.Application.Repositories.CategoryRepository;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Application.Features.Queries.Category.GetCategories
 {
@@ -13,6 +14,7 @@ namespace BookStore.Application.Features.Queries.Category.GetCategories
     {
         readonly ICategoryReadRepository _categoryReadRepository;
         readonly IMapper _mapper;
+        //readonly BookStoreDbContext _context;
 
         public GetCategoriesQueryHandler(ICategoryReadRepository categoryReadRepository, IMapper mapper)
         {
@@ -22,6 +24,7 @@ namespace BookStore.Application.Features.Queries.Category.GetCategories
 
         public async Task<GetCategoriesQueryResponse> Handle(GetCategoriesQueryRequest request, CancellationToken cancellationToken)
         {
+            var a = await _categoryReadRepository.sa();
             return new GetCategoriesQueryResponse
             {
                 IsSuccess = true,
