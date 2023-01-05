@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using BookStore.Application.Abstractions.Token;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -12,7 +8,7 @@ namespace BookStore.Infrastructure.Services.Token
 {
     public class TokenHandler : ITokenHandler
     {
-        readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
         public TokenHandler(IConfiguration configuration)
         {

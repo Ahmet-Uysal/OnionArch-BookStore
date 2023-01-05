@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStore.Application.Repositories;
 using BookStore.Domain.Entities.Common;
 using BookStore.Persistence.Contexts;
@@ -22,7 +18,7 @@ namespace BookStore.Persistence.Repositories
 
         public async Task<bool> AddAsync(T model)
         {
-            var entity = await Table.AddAsync(model);
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<T> entity = await Table.AddAsync(model);
             return entity.State == EntityState.Added;
         }
 
@@ -34,13 +30,13 @@ namespace BookStore.Persistence.Repositories
 
         public bool Remove(T model)
         {
-            var entity = Table.Remove(model);
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<T> entity = Table.Remove(model);
             return entity.State == EntityState.Deleted;
         }
 
         public async Task<bool> RemoveAsync(string id)
         {
-            var entity = await Table.FirstOrDefaultAsync(x => x.Id == Guid.Parse(id));
+            T? entity = await Table.FirstOrDefaultAsync(x => x.Id == Guid.Parse(id));
             return Remove(entity);
         }
         public bool RemoveRange(List<T> model)
@@ -51,10 +47,12 @@ namespace BookStore.Persistence.Repositories
 
         public bool Update(T model)
         {
-            var entity = Table.Update(model);
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<T> entity = Table.Update(model);
             return entity.State == EntityState.Modified;
         }
-        public async Task<int> SaveAsync() => await _context.SaveChangesAsync();
-
+        public async Task<int> SaveAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
     }
 }

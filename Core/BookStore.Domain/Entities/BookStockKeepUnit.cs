@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStore.Domain.Entities.Common;
 using BookStore.Domain.Enums;
 
@@ -9,8 +5,8 @@ namespace BookStore.Domain.Entities
 {
     public class BookStockKeepUnit : BaseEntity
     {
-        public string ISBN { get; set; }
-        public string OrginalName { get; set; }
+        public string? ISBN { get; set; }
+        public string? OrginalName { get; set; }
         public int PageCount { get; set; }
         public VolumeType VolumeType { get; set; }
         public PaperType PaperType { get; set; }
@@ -23,11 +19,11 @@ namespace BookStore.Domain.Entities
         public HealthState HealthState { get; set; }
 
         public Guid? BookId { get; set; }
-        public Book Book { get; set; }
+        public Book? Book { get; set; }
         public Guid? PublisherId { get; set; }
-        public Publisher Publisher { get; set; }
-        public ICollection<BookImageFile> BookImages { get; set; }
-        public ICollection<Translator> Translators { get; set; }
+        public Publisher? Publisher { get; set; }
+        public ICollection<BookImageFile>? BookImages { get; set; }
+        public ICollection<Translator>? Translators { get; set; }
 
     }
 }

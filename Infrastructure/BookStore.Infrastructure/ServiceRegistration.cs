@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStore.Application.Abstractions;
 using BookStore.Application.Abstractions.Services.Configurations;
 using BookStore.Application.Abstractions.Storage;
@@ -21,16 +17,16 @@ namespace BookStore.Infrastructure
     {
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
-            services.AddScoped<IFileService, FileService>();
-            services.AddScoped<ITokenHandler, TokenHandler>();
-            services.AddHttpClient();
-            services.AddScoped<IApplicationService, ApplicationService>();
-            services.AddScoped<IObjectOperations, ObjectOperations>();
+            _ = services.AddScoped<IFileService, FileService>();
+            _ = services.AddScoped<ITokenHandler, TokenHandler>();
+            _ = services.AddHttpClient();
+            _ = services.AddScoped<IApplicationService, ApplicationService>();
+            _ = services.AddScoped<IObjectOperations, ObjectOperations>();
         }
         public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : Storage, IStorage
         {
-            serviceCollection.AddScoped<IStorage, T>();
-            serviceCollection.AddScoped<IStorageService, StorageService>();
+            _ = serviceCollection.AddScoped<IStorage, T>();
+            _ = serviceCollection.AddScoped<IStorageService, StorageService>();
 
         }
         public static void AddStorage(this IServiceCollection serviceCollection, StorageType storageType)
@@ -38,7 +34,7 @@ namespace BookStore.Infrastructure
             switch (storageType)
             {
                 case StorageType.Local:
-                    serviceCollection.AddScoped<IStorage, LocalStorage>();
+                    _ = serviceCollection.AddScoped<IStorage, LocalStorage>();
                     break;
                 case StorageType.Azure:
                     break;
@@ -46,7 +42,7 @@ namespace BookStore.Infrastructure
 
                     break;
                 default:
-                    serviceCollection.AddScoped<IStorage, LocalStorage>();
+                    _ = serviceCollection.AddScoped<IStorage, LocalStorage>();
                     break;
             }
         }

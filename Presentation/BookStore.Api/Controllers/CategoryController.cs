@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using BookStore.Application.Features.Commands.Category.AddCategory;
 using BookStore.Application.Features.Commands.Category.UpdateCategory;
 using BookStore.Application.Features.Queries.Category.GetCategories;
@@ -10,7 +6,6 @@ using BookStore.Application.Features.Queries.Category.GetCategoriesWithSub;
 using BookStore.Application.Repositories.BookRepository;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Api.Controllers
 {
@@ -42,10 +37,16 @@ namespace BookStore.Api.Controllers
         }
         [HttpGet("[action]")]
         // [Route("[action]")]
-        public async Task<IActionResult> GetAllCategoriesWithSub() => Ok(await _mediator.Send(new GetCategoriesWithSubQueryRequest()));
+        public async Task<IActionResult> GetAllCategoriesWithSub()
+        {
+            return Ok(await _mediator.Send(new GetCategoriesWithSubQueryRequest()));
+        }
+
         [HttpPut("[action]")]
         // [Route("[action]")]
-        public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommandRequest entity) => Ok(await _mediator.Send(entity));
-
+        public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommandRequest entity)
+        {
+            return Ok(await _mediator.Send(entity));
+        }
     }
 }

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStore.Infrastructure.Operations;
 
 namespace BookStore.Infrastructure.Services.Storage
@@ -11,7 +7,7 @@ namespace BookStore.Infrastructure.Services.Storage
         protected delegate bool HasFile(string pathOrContainerName, string fileName);
         protected async Task<string> FileRenameAsync(string pathOrContainerName, string fileName, HasFile hasFileMethod, bool first = true)
         {
-            string newFileName = await Task.Run<string>(async () =>
+            string newFileName = await Task.Run(async () =>
             {
                 string extension = Path.GetExtension(fileName);
                 string newFileName = string.Empty;
@@ -25,7 +21,9 @@ namespace BookStore.Infrastructure.Services.Storage
                     newFileName = fileName;
                     int indexNo1 = newFileName.IndexOf("-");
                     if (indexNo1 == -1)
+                    {
                         newFileName = $"{Path.GetFileNameWithoutExtension(newFileName)}-2{extension}";
+                    }
                     else
                     {
                         int lastIndex = 0;
@@ -50,16 +48,16 @@ namespace BookStore.Infrastructure.Services.Storage
                                                 .Insert(indexNo1 + 1, _fileNo.ToString());
                         }
                         else
+                        {
                             newFileName = $"{Path.GetFileNameWithoutExtension(newFileName)}-2{extension}";
-
+                        }
                     }
                 }
 
                 //if (File.Exists($"{path}\\{newFileName}"))
-                if (hasFileMethod(pathOrContainerName, newFileName))
-                    return await FileRenameAsync(pathOrContainerName, newFileName, hasFileMethod, false);
-                else
-                    return newFileName;
+                return hasFileMethod(pathOrContainerName, newFileName)
+                    ? await FileRenameAsync(pathOrContainerName, newFileName, hasFileMethod, false)
+                    : newFileName;
             });
 
             return newFileName;

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStore.Application.Repositories.CategoryRepository;
 using MediatR;
 using C = BookStore.Domain.Entities;

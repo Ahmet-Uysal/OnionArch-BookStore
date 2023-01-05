@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using BookStore.Application.Dtos.Category;
 using BookStore.Application.Repositories.CategoryRepository;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Application.Features.Queries.Category.GetCategories
 {

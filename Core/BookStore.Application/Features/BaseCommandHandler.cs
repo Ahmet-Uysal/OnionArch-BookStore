@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace BookStore.Application.Features
 {
     public abstract class BaseHandler<T, E> where T : class where E : class

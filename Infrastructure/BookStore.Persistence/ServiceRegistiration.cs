@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStore.Domain.Entities.Identity;
 using BookStore.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -40,13 +36,13 @@ namespace BookStore.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services, ConfigurationManager configuration)
         {
-            services.AddDbContext<BookStoreDbContext>(options =>
+            _ = services.AddDbContext<BookStoreDbContext>(options =>
             {
-                var connectionString = configuration.GetConnectionString("MySql");
-                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                string? connectionString = configuration.GetConnectionString("MySql");
+                _ = options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             }
         );
-            services.AddIdentity<User, Role>(options =>
+            _ = services.AddIdentity<User, Role>(options =>
           {
               options.Password.RequiredLength = 3;
               options.Password.RequireNonAlphanumeric = false;
@@ -54,41 +50,41 @@ namespace BookStore.Persistence
               options.Password.RequireLowercase = false;
               options.Password.RequireUppercase = false;
           }).AddEntityFrameworkStores<BookStoreDbContext>();
-            services.AddScoped<IAuthorImageFileReadRepository, AuthorImageFileReadRepository>();
-            services.AddScoped<IAuthorImageFileWriteRepository, AuthorImageFileWriteRepository>();
+            _ = services.AddScoped<IAuthorImageFileReadRepository, AuthorImageFileReadRepository>();
+            _ = services.AddScoped<IAuthorImageFileWriteRepository, AuthorImageFileWriteRepository>();
 
-            services.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
-            services.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();
+            _ = services.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
+            _ = services.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();
 
-            services.AddScoped<IBookImageFileReadRepository, BookImageFileReadRepository>();
-            services.AddScoped<IBookImageFileWriteRepository, BookImageFileWriteRepository>();
+            _ = services.AddScoped<IBookImageFileReadRepository, BookImageFileReadRepository>();
+            _ = services.AddScoped<IBookImageFileWriteRepository, BookImageFileWriteRepository>();
 
-            services.AddScoped<IBookReadRepository, BookReadRepository>();
-            services.AddScoped<IBookWriteRepository, BookWriteRepository>();
+            _ = services.AddScoped<IBookReadRepository, BookReadRepository>();
+            _ = services.AddScoped<IBookWriteRepository, BookWriteRepository>();
 
-            services.AddScoped<IBookStockKeepUnitReadRepository, BookStockKeepUnitReadRepository>();
-            services.AddScoped<IBookStockKeepUnitWriteRepository, BookStockKeepUnitWriteRepository>();
+            _ = services.AddScoped<IBookStockKeepUnitReadRepository, BookStockKeepUnitReadRepository>();
+            _ = services.AddScoped<IBookStockKeepUnitWriteRepository, BookStockKeepUnitWriteRepository>();
 
-            services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
-            services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
+            _ = services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
+            _ = services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
 
-            services.AddScoped<IEndpointReadRepository, EndpointReadRepository>();
-            services.AddScoped<IEndpointWriteRepository, EndpointWriteRepository>();
+            _ = services.AddScoped<IEndpointReadRepository, EndpointReadRepository>();
+            _ = services.AddScoped<IEndpointWriteRepository, EndpointWriteRepository>();
 
-            services.AddScoped<IFileReadRepository, FileReadRepository>();
-            services.AddScoped<IFileWriteRepository, FileWriteRepository>();
+            _ = services.AddScoped<IFileReadRepository, FileReadRepository>();
+            _ = services.AddScoped<IFileWriteRepository, FileWriteRepository>();
 
-            services.AddScoped<IMenuReadRepository, MenuReadRepository>();
-            services.AddScoped<IMenuWriteRepository, MenuWriteRepository>();
+            _ = services.AddScoped<IMenuReadRepository, MenuReadRepository>();
+            _ = services.AddScoped<IMenuWriteRepository, MenuWriteRepository>();
 
-            services.AddScoped<IPublisherReadRepository, PublisherReadRepository>();
-            services.AddScoped<IPublisherWriteRepository, PublisherWriteRepository>();
+            _ = services.AddScoped<IPublisherReadRepository, PublisherReadRepository>();
+            _ = services.AddScoped<IPublisherWriteRepository, PublisherWriteRepository>();
 
-            services.AddScoped<ITranslatorReadRepository, TranslatorReadRepository>();
-            services.AddScoped<ITranslatorWriteRepository, TranslatorWriteRepository>();
+            _ = services.AddScoped<ITranslatorReadRepository, TranslatorReadRepository>();
+            _ = services.AddScoped<ITranslatorWriteRepository, TranslatorWriteRepository>();
 
-            services.AddScoped<IUserBookStockKeepUnitReadRepository, UserBookStockKeepUnitReadRepository>();
-            services.AddScoped<IUserBookStockKeepUnitWriteRepository, UserBookStockKeepUnitWriteRepository>();
+            _ = services.AddScoped<IUserBookStockKeepUnitReadRepository, UserBookStockKeepUnitReadRepository>();
+            _ = services.AddScoped<IUserBookStockKeepUnitWriteRepository, UserBookStockKeepUnitWriteRepository>();
         }
     }
 }

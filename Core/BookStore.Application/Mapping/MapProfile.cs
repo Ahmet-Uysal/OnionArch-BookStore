@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using BookStore.Application.Dtos.Category;
 using BookStore.Domain.Entities;
@@ -12,8 +8,8 @@ namespace BookStore.Application.Mapping
     {
         public MapProfile()
         {
-            CreateMap<Category, GetCategoriesDto>();
-            CreateMap<Category, GetCategoriesIgnoreIncludes>();
+            _ = CreateMap<Category, GetCategoriesDto>();
+            _ = CreateMap<Category, GetCategoriesIgnoreIncludes>();
         }
     }
 }

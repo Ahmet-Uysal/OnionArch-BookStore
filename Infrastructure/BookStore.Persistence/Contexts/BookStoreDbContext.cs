@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStore.Domain.Entities;
 using BookStore.Domain.Entities.Common;
 using BookStore.Domain.Entities.Identity;
@@ -14,14 +10,8 @@ namespace BookStore.Persistence.Contexts
     {
         public BookStoreDbContext(DbContextOptions options) : base(options)
         {
-            this.ChangeTracker.LazyLoadingEnabled = false;
         }
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-        // {
-
-        //     optionsBuilder.UseMySql(Configuration.ConnectionString, ServerVersion.AutoDetect(Configuration.ConnectionString));
-        // }
         public DbSet<Author> Authors { get; set; }
         public DbSet<AuthorImageFile> AuthorImageFiles { get; set; }
         public DbSet<Book> Books { get; set; }
@@ -36,32 +26,13 @@ namespace BookStore.Persistence.Contexts
         public DbSet<UserBookStockKeepUnit> UserBookSKUs { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
             base.OnModelCreating(builder);
-            // // builder.Entity<Category>()
-            // // .HasOne(s => s.Parent)
-            // // .WithMany(m => m.SubCategories)
-            // // .HasForeignKey(e => e.ParentId).IsRequired(false);
-            // //builder.Entity<Category>().has(m => m.Parent).WithMany(m => m.Children);
-            // builder.Entity<Category>(category =>
-            // {
-            //     category.HasMany(c => c.SubCategories)
-            //     .WithOne(c => c.Parent)
-            //     .HasForeignKey(c => c.ParentId).IsRequired(false);
-            // });
         }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            var entries = ChangeTracker.Entries<BaseEntity>();
-            foreach (var data in entries)
+            IEnumerable<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<BaseEntity>> entries = ChangeTracker.Entries<BaseEntity>();
+            foreach (Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<BaseEntity> data in entries)
             {
-                // _ = data.State switch
-                // {
-                //     EntityState.Added => data.Entity.CreatedDate = DateTime.UtcNow,
-                //     EntityState.Modified => data.Entity.UpdatedDate = DateTime.UtcNow,
-                //     default break
-
-                // };
                 switch (data.State)
                 {
                     case EntityState.Added:
@@ -69,6 +40,12 @@ namespace BookStore.Persistence.Contexts
                         break;
                     case EntityState.Modified:
                         data.Entity.ModifyDate = DateTime.UtcNow;
+                        break;
+                    case EntityState.Detached:
+                        break;
+                    case EntityState.Unchanged:
+                        break;
+                    case EntityState.Deleted:
                         break;
                     default:
                         break;
