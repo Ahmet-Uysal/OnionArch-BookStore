@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookStore.Application.Abstractions;
 using BookStore.Application.Abstractions.Services.Configurations;
 using BookStore.Application.Abstractions.Storage;
 using BookStore.Application.Abstractions.Token;
@@ -24,6 +25,7 @@ namespace BookStore.Infrastructure
             services.AddScoped<ITokenHandler, TokenHandler>();
             services.AddHttpClient();
             services.AddScoped<IApplicationService, ApplicationService>();
+            services.AddScoped<IObjectOperations, ObjectOperations>();
         }
         public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : Storage, IStorage
         {

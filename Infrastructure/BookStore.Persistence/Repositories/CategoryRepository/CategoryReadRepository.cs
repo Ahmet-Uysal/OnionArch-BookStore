@@ -16,10 +16,5 @@ namespace BookStore.Persistence.Repositories.CategoryRepository
         {
             _context = context;
         }
-
-        public async Task<List<Category>> sa()
-        {
-            return _context.Categories.IgnoreAutoIncludes().ToList();
-        }
     }
 }

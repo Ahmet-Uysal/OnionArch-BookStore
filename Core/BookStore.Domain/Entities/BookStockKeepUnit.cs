@@ -9,6 +9,8 @@ namespace BookStore.Domain.Entities
 {
     public class BookStockKeepUnit : BaseEntity
     {
+        public string ISBN { get; set; }
+        public string OrginalName { get; set; }
         public int PageCount { get; set; }
         public VolumeType VolumeType { get; set; }
         public PaperType PaperType { get; set; }

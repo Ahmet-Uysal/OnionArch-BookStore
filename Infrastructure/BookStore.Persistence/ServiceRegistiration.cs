@@ -32,16 +32,20 @@ using BookStore.Persistence.Repositories.PublisherRepository;
 using BookStore.Persistence.Repositories.TranslatorRepository;
 using BookStore.Persistence.Repositories.UserBookStockKeepUnitRepository;
 using BookStore.Persistence.Repositories.AuthorImageFileRepository;
+using Microsoft.Extensions.Configuration;
 
 namespace BookStore.Persistence
 {
     public static class ServiceRegistiration
     {
-        public static void AddPersistenceServices(this IServiceCollection services)
+        public static void AddPersistenceServices(this IServiceCollection services, ConfigurationManager configuration)
         {
             services.AddDbContext<BookStoreDbContext>(options =>
-                       options.UseMySql(Configuration.ConnectionString, ServerVersion.AutoDetect(Configuration.ConnectionString))
-                       );
+            {
+                var connectionString = configuration.GetConnectionString("MySql");
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            }
+        );
             services.AddIdentity<User, Role>(options =>
           {
               options.Password.RequiredLength = 3;

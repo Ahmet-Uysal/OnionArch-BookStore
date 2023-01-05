@@ -8,6 +8,5 @@ namespace BookStore.Application.Repositories.CategoryRepository
 {
     public interface ICategoryReadRepository : IReadRepository<Category>
     {
-        Task<List<Category>> sa();
     }
 }

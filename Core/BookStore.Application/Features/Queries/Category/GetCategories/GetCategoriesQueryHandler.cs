@@ -24,11 +24,10 @@ namespace BookStore.Application.Features.Queries.Category.GetCategories
 
         public async Task<GetCategoriesQueryResponse> Handle(GetCategoriesQueryRequest request, CancellationToken cancellationToken)
         {
-            var a = await _categoryReadRepository.sa();
             return new GetCategoriesQueryResponse
             {
                 IsSuccess = true,
-                Data = _mapper.Map<List<GetCategoriesDto>>(_categoryReadRepository.GetAll()),
+                Data = _mapper.Map<List<GetCategoriesIgnoreIncludes>>(_categoryReadRepository.GetAll(false)),
                 Message = null
             };
         }

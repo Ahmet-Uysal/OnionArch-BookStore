@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStore.Persistence.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    [Migration("20230104161149_Mg_1")]
+    [Migration("20230105173329_Mg_1")]
     partial class Mg1
     {
         /// <inheritdoc />
@@ -121,10 +121,6 @@ namespace BookStore.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("ISBN")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
 
@@ -139,10 +135,6 @@ namespace BookStore.Persistence.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("OrginalName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -185,6 +177,10 @@ namespace BookStore.Persistence.Migrations
                     b.Property<int>("HealthState")
                         .HasColumnType("int");
 
+                    b.Property<string>("ISBN")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
 
@@ -193,6 +189,10 @@ namespace BookStore.Persistence.Migrations
 
                     b.Property<DateTime>("ModifyDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("OrginalName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("PageCount")
                         .HasColumnType("int");

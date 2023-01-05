@@ -13,6 +13,7 @@ namespace BookStore.Application.Mapping
         public MapProfile()
         {
             CreateMap<Category, GetCategoriesDto>();
+            CreateMap<Category, GetCategoriesIgnoreIncludes>();
         }
     }
 }
