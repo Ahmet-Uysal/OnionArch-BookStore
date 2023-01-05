@@ -11,10 +11,10 @@ namespace BookStore.Persistence.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterDatabase()
+            _ = migrationBuilder.AlterDatabase()
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -28,11 +28,11 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                    _ = table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
                 {
@@ -64,11 +64,11 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    _ = table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Authors",
                 columns: table => new
                 {
@@ -86,11 +86,11 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Authors", x => x.Id);
+                    _ = table.PrimaryKey("PK_Authors", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
@@ -105,8 +105,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_Categories", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_Categories_Categories_ParentId",
                         column: x => x.ParentId,
                         principalTable: "Categories",
@@ -114,7 +114,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Menus",
                 columns: table => new
                 {
@@ -128,11 +128,11 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Menus", x => x.Id);
+                    _ = table.PrimaryKey("PK_Menus", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Publishers",
                 columns: table => new
                 {
@@ -150,11 +150,11 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Publishers", x => x.Id);
+                    _ = table.PrimaryKey("PK_Publishers", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Translators",
                 columns: table => new
                 {
@@ -172,11 +172,11 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Translators", x => x.Id);
+                    _ = table.PrimaryKey("PK_Translators", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -190,8 +190,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
@@ -200,7 +200,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
@@ -214,8 +214,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_AspNetUserClaims_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
@@ -224,7 +224,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
@@ -238,8 +238,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    _ = table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
@@ -248,7 +248,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
@@ -257,14 +257,14 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    _ = table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
@@ -273,7 +273,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
@@ -287,8 +287,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    _ = table.ForeignKey(
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
@@ -297,7 +297,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Endpoints",
                 columns: table => new
                 {
@@ -318,8 +318,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Endpoints", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_Endpoints", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_Endpoints_Menus_MenuId",
                         column: x => x.MenuId,
                         principalTable: "Menus",
@@ -327,7 +327,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "EndpointRole",
                 columns: table => new
                 {
@@ -336,14 +336,14 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EndpointRole", x => new { x.EndpointsId, x.RolesId });
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_EndpointRole", x => new { x.EndpointsId, x.RolesId });
+                    _ = table.ForeignKey(
                         name: "FK_EndpointRole_AspNetRoles_RolesId",
                         column: x => x.RolesId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_EndpointRole_Endpoints_EndpointsId",
                         column: x => x.EndpointsId,
                         principalTable: "Endpoints",
@@ -352,7 +352,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AuthorAuthorImageFile",
                 columns: table => new
                 {
@@ -361,8 +361,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AuthorAuthorImageFile", x => new { x.AuthorImageFilesId, x.AuthorsId });
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_AuthorAuthorImageFile", x => new { x.AuthorImageFilesId, x.AuthorsId });
+                    _ = table.ForeignKey(
                         name: "FK_AuthorAuthorImageFile_Authors_AuthorsId",
                         column: x => x.AuthorsId,
                         principalTable: "Authors",
@@ -371,7 +371,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AuthorBook",
                 columns: table => new
                 {
@@ -380,8 +380,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AuthorBook", x => new { x.AuthorsId, x.BooksId });
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_AuthorBook", x => new { x.AuthorsId, x.BooksId });
+                    _ = table.ForeignKey(
                         name: "FK_AuthorBook_Authors_AuthorsId",
                         column: x => x.AuthorsId,
                         principalTable: "Authors",
@@ -390,7 +390,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Books",
                 columns: table => new
                 {
@@ -411,8 +411,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Books", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_Books", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_Books_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
@@ -421,7 +421,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "BookStockKeepUnits",
                 columns: table => new
                 {
@@ -449,13 +449,13 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookStockKeepUnits", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_BookStockKeepUnits", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_BookStockKeepUnits_Books_BookId",
                         column: x => x.BookId,
                         principalTable: "Books",
                         principalColumn: "Id");
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_BookStockKeepUnits_Publishers_PublisherId",
                         column: x => x.PublisherId,
                         principalTable: "Publishers",
@@ -463,7 +463,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "BookStockKeepUnitTranslator",
                 columns: table => new
                 {
@@ -472,14 +472,14 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookStockKeepUnitTranslator", x => new { x.BookStockKeepUnitsId, x.TranslatorsId });
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_BookStockKeepUnitTranslator", x => new { x.BookStockKeepUnitsId, x.TranslatorsId });
+                    _ = table.ForeignKey(
                         name: "FK_BookStockKeepUnitTranslator_BookStockKeepUnits_BookStockKeep~",
                         column: x => x.BookStockKeepUnitsId,
                         principalTable: "BookStockKeepUnits",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_BookStockKeepUnitTranslator_Translators_TranslatorsId",
                         column: x => x.TranslatorsId,
                         principalTable: "Translators",
@@ -488,7 +488,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Files",
                 columns: table => new
                 {
@@ -508,8 +508,8 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Files", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_Files", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_Files_BookStockKeepUnits_BookStockKeepUnitId",
                         column: x => x.BookStockKeepUnitId,
                         principalTable: "BookStockKeepUnits",
@@ -517,7 +517,7 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "UserBookSKUs",
                 columns: table => new
                 {
@@ -537,13 +537,13 @@ namespace BookStore.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserBookSKUs", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_UserBookSKUs", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_UserBookSKUs_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_UserBookSKUs_BookStockKeepUnits_BookStockKeepUnitId",
                         column: x => x.BookStockKeepUnitId,
                         principalTable: "BookStockKeepUnits",
@@ -551,109 +551,109 @@ namespace BookStore.Persistence.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true);
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
                 table: "AspNetUserRoles",
                 column: "RoleId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_AuthorAuthorImageFile_AuthorsId",
                 table: "AuthorAuthorImageFile",
                 column: "AuthorsId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_AuthorBook_BooksId",
                 table: "AuthorBook",
                 column: "BooksId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Books_BookImageFileId",
                 table: "Books",
                 column: "BookImageFileId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Books_CategoryId",
                 table: "Books",
                 column: "CategoryId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_BookStockKeepUnits_BookId",
                 table: "BookStockKeepUnits",
                 column: "BookId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_BookStockKeepUnits_PublisherId",
                 table: "BookStockKeepUnits",
                 column: "PublisherId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_BookStockKeepUnitTranslator_TranslatorsId",
                 table: "BookStockKeepUnitTranslator",
                 column: "TranslatorsId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Categories_ParentId",
                 table: "Categories",
                 column: "ParentId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_EndpointRole_RolesId",
                 table: "EndpointRole",
                 column: "RolesId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Endpoints_MenuId",
                 table: "Endpoints",
                 column: "MenuId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Files_BookStockKeepUnitId",
                 table: "Files",
                 column: "BookStockKeepUnitId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_UserBookSKUs_BookStockKeepUnitId",
                 table: "UserBookSKUs",
                 column: "BookStockKeepUnitId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_UserBookSKUs_UserId",
                 table: "UserBookSKUs",
                 column: "UserId");
 
-            migrationBuilder.AddForeignKey(
+            _ = migrationBuilder.AddForeignKey(
                 name: "FK_AuthorAuthorImageFile_Files_AuthorImageFilesId",
                 table: "AuthorAuthorImageFile",
                 column: "AuthorImageFilesId",
@@ -661,7 +661,7 @@ namespace BookStore.Persistence.Migrations
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
-            migrationBuilder.AddForeignKey(
+            _ = migrationBuilder.AddForeignKey(
                 name: "FK_AuthorBook_Books_BooksId",
                 table: "AuthorBook",
                 column: "BooksId",
@@ -669,7 +669,7 @@ namespace BookStore.Persistence.Migrations
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
-            migrationBuilder.AddForeignKey(
+            _ = migrationBuilder.AddForeignKey(
                 name: "FK_Books_Files_BookImageFileId",
                 table: "Books",
                 column: "BookImageFileId",
@@ -680,71 +680,71 @@ namespace BookStore.Persistence.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
+            _ = migrationBuilder.DropForeignKey(
                 name: "FK_Books_Files_BookImageFileId",
                 table: "Books");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AspNetUserClaims");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AspNetUserLogins");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AspNetUserRoles");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AuthorAuthorImageFile");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AuthorBook");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "BookStockKeepUnitTranslator");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "EndpointRole");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "UserBookSKUs");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Authors");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Translators");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Endpoints");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Menus");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Files");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "BookStockKeepUnits");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Books");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Publishers");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Categories");
         }
     }
