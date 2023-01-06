@@ -2,23 +2,23 @@ import { useState } from "react";
 import { fetchCategory } from "./features/categorySlice";
 import { add } from "./features/todoSlice";
 import { useAppDispatch, useAppSelector } from "./store";
-
-
+import Button from '@mui/material/Button';
+import '@fontsource/roboto/500.css';
+import { Route, Routes } from "react-router-dom";
+import Categories from "./pages/Categories";
+import Contract from "./pages/Contract";
+import Navbar from "./components/navbar/Navbar";
 function App() {
-  const todos = useAppSelector(state => state.todos)
-  const categories = useAppSelector(state => state.category)
-  const [title, setTitle] = useState("")
-  const dispatch = useAppDispatch();
-  const onSave = () => {
-    dispatch(add(title));
-    setTitle("");
-  }
-  const getCategory = () => {
-    dispatch(fetchCategory())
-  }
+
+
   return (
     <div className="App">
-      <input
+      <Navbar></Navbar>
+      <Routes>
+        <Route path='/Contract' element={<Contract></Contract>}></Route>
+        <Route path='/Categories' element={<Categories></Categories>}></Route>
+      </Routes>
+      {/* <input
         type="text"
         name="title"
         value={title}
@@ -29,7 +29,10 @@ function App() {
 
       </ul>
       <div>
-        <button onClick={getCategory}>Verileri Çek</button>
+        <Button variant="contained" onClick={getCategory}>Verileri Çek</Button>
+        <div>
+          {categories.loading ? "bekliyor" : "bitti"}
+        </div>
         <table>
           <thead>
             <thead style={{ marginLeft: 50 }}>Id</thead>
@@ -42,7 +45,7 @@ function App() {
         <ul>
 
         </ul>
-      </div>
+      </div> */}
     </div>
 
 

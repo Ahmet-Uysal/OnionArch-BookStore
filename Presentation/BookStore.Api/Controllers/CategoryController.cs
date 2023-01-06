@@ -33,6 +33,7 @@ namespace BookStore.Api.Controllers
             // await _mediator.Send(createProductCommandRequest);
             // var l = _rep.GetAll().Include(x => x.Category);
             // return Ok(l);
+            Thread.Sleep(1500);
             return Ok(await _mediator.Send(new GetCategoriesQueryRequest()));
         }
         [HttpGet("[action]")]

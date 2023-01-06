@@ -4,7 +4,7 @@ import { Category, CategoryState, Response } from "../interface/Category";
 
 const initialState: CategoryState = {
     data: null,
-    loading: false,
+    loading: true,
     error: ""
 }
 
