@@ -18,6 +18,13 @@ steps:
   inputs:
     version: '7.x'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: 'Presentation/BookStore.Api/*.csproj'
+    arguments: '--configuration Release --no-build --output $(build.ArtifactStagingDirectory) --verbosity minimal'
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -32,12 +39,6 @@ steps:
   inputs:
     version: '7.x'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/Presentation/BookStore.Api/*.csproj'
-    arguments: '--configuration Release --no-build --output $(build.ArtifactStagingDirectory) --verbosity minimal'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
