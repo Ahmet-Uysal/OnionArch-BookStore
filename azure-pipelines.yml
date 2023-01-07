@@ -8,6 +8,10 @@
 
 pool:
   vmImage: 'windows-latest'
+steps:
+- task: UseDotNet@2
+  inputs:
+    version: '7.x'
 
 variables:
   solution: '**/*.sln'
