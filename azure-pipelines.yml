@@ -27,6 +27,11 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
+
+- task: UseDotNet@2
+  inputs:
+    version: '7.x'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
