@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": "Testing",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -18,7 +18,30 @@
             //     "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
             // },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Testing"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            },
+            "launchBrowser": {
+                "enabled": false
+            }
+        },
+        {
+            "name": "Production",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Presentation/BookStore.Api/bin/Debug/net7.0/BookStore.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Presentation/BookStore.Api",
+            "stopAtEntry": false,
+            // "serverReadyAction": {
+            //     "action": "openExternally",
+            //     "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            // },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
