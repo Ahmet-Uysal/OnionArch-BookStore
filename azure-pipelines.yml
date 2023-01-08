@@ -1,0 +1,61 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- master
+pool:
+
+  name: Azure Pipelines
+
+steps:
+
+- task: UseDotNet@2
+
+  displayName: 'Use .NET Core sdk 7.x'
+
+  inputs:
+
+    version: 7.x
+
+
+
+- task: DotNetCoreCLI@2
+
+  displayName: 'dotnet restore'
+
+  inputs:
+
+    command: restore
+
+
+
+- task: DotNetCoreCLI@2
+
+  displayName: 'dotnet build'
+
+
+
+- task: DotNetCoreCLI@2
+
+  displayName: 'dotnet publish'
+
+  inputs:
+
+    command: publish
+
+    publishWebProjects: false
+
+    projects: '**/Presentation/BookStore.Api/*.csproj'
+
+    arguments: ' --output $(build.ArtifactStagingDirectory)'
+
+
+
+- task: PublishBuildArtifacts@1
+
+  displayName: 'Publish Artifact: drop'
+
+
+
