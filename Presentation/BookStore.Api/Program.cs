@@ -7,7 +7,6 @@ using BookStore.Infrastructure.Filters;
 using BookStore.Persistence;
 using FluentValidation.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddControllers(opt => opt.Filters.Add<ValidationFilter>())
     .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<AddCategoryValidator>())
@@ -17,7 +16,6 @@ builder.Services.AddControllers(opt => opt.Filters.Add<ValidationFilter>())
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceServices(builder.Configuration);
-
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddCors(o => o.AddDefaultPolicy(policy =>
