@@ -16,7 +16,7 @@ namespace BookStore.Application.Features.Commands.Category.SwitchCategoryActiveS
         public async Task<SwitchCategoryActiveStatusCommandResponse> Handle(SwitchCategoryActiveStatusCommandRequest request, CancellationToken cancellationToken)
         {
             var entity = await _readRepository.GetByIdAsync(request.Id);
-            entity.IsActive = !entity.IsActive;
+            entity.SwitchState();
             _writeRepository.Update(entity);
             await _writeRepository.SaveAsync();
             return new();

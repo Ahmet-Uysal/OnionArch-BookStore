@@ -1,5 +1,5 @@
 using System.Net;
-using BookStore.Application.Features.Commands.Category.AddCategory;
+using BookStore.Application.Features.Commands.Category.CreateCategory;
 using BookStore.Application.Features.Commands.Category.RemoveCategory;
 using BookStore.Application.Features.Commands.Category.SubscribeCategory;
 using BookStore.Application.Features.Commands.Category.SwitchCategoryActiveStatus;
@@ -7,7 +7,6 @@ using BookStore.Application.Features.Commands.Category.UnsubscribeCategory;
 using BookStore.Application.Features.Commands.Category.UpdateCategory;
 using BookStore.Application.Features.Queries.Category.GetCategories;
 using BookStore.Application.Features.Queries.Category.GetCategoriesWithSub;
-using BookStore.Application.Repositories.BookRepository;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +21,7 @@ namespace BookStore.Api.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> CreateCategory([FromBody] AddCategoryCommandRequest createProductCommandRequest) => StatusCode((int)HttpStatusCode.Created, await _mediator.Send(createProductCommandRequest));
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommandRequest createProductCommandRequest) => StatusCode((int)HttpStatusCode.Created, await _mediator.Send(createProductCommandRequest));
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetAllCategories() => Ok(await _mediator.Send(new GetCategoriesQueryRequest()));

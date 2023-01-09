@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Application.Features.Commands.Category.SwitchCategoryActiveStatus
 {
-    public class SwitchCategoryActiveStatusCommandResponse : ApiResponse<object>
+    public class SwitchCategoryActiveStatusCommandResponse : ApiResponse
     {
 
     }

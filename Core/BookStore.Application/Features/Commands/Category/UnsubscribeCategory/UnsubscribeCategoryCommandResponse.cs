@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Application.Features.Commands.Category.UnsubscribeCategory
 {
-    public class UnsubscribeCategoryCommandResponse : ApiResponse<object>
+    public class UnsubscribeCategoryCommandResponse : ApiResponse
     {
 
     }

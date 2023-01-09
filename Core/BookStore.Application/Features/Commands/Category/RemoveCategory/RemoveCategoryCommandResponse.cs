@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Application.Features.Commands.Category.RemoveCategory
 {
-    public class RemoveCategoryCommandResponse : ApiResponse<object>
+    public class RemoveCategoryCommandResponse : ApiResponse
     {
 
     }
