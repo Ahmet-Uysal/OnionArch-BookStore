@@ -7,5 +7,6 @@ namespace BookStore.Domain.Entities
         public string? Name { get; set; }
         public string? GLN { get; set; }
         public string? PhoneNumber { get; set; }
+        public ICollection<BookStockKeepUnit> Books { get; set; }
     }
 }

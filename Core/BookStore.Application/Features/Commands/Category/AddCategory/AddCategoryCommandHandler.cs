@@ -19,12 +19,7 @@ namespace BookStore.Application.Features.Commands.Category.AddCategory
             category.Name = request.Name;
             await _categoryWriteRepository.AddAsync(category);
             await _categoryWriteRepository.SaveAsync();
-            return new()
-            {
-                IsSuccess = true,
-                Data = null,
-                Message = null
-            };
+            return new();
         }
     }
 }
