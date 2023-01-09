@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Application.Features.Commands.Category.SubscribeCategory
 {
-    public class SubscribeCategoryCommandResponse : ApiResponse<object>
+    public class SubscribeCategoryCommandResponse : ApiResponse
     {
 
     }

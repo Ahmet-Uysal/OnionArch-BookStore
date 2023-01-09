@@ -18,7 +18,7 @@ namespace BookStore.Infrastructure.Filters
                 context.ModelState
                         .Where(x => x.Value.Errors.Any()).ToList().ForEach(x => errors.AddRange(x.Value.Errors.Select(x => x.ErrorMessage).ToList()));
 
-                context.Result = new BadRequestObjectResult(new ApiResponse<object>
+                context.Result = new BadRequestObjectResult(new ApiResponse
                 {
                     IsSuccess = false,
                     Data = null,
