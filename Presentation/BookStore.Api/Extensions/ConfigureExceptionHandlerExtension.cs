@@ -21,7 +21,7 @@ namespace BookStore.Api.Extensions
                     {
                         logger.LogError(contextFeature.Error.Message);
 
-                        await context.Response.WriteAsync(JsonSerializer.Serialize(new ApiResponse<object>
+                        await context.Response.WriteAsync(JsonSerializer.Serialize(new ApiResponse
                         {
                             IsSuccess = false,
                             Data = null,

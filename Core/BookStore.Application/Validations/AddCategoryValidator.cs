@@ -1,9 +1,9 @@
-using BookStore.Application.Features.Commands.Category.AddCategory;
+using BookStore.Application.Features.Commands.Category.CreateCategory;
 using FluentValidation;
 
 namespace BookStore.Application.Validations
 {
-    public class AddCategoryValidator : AbstractValidator<AddCategoryCommandRequest>
+    public class AddCategoryValidator : AbstractValidator<CreateCategoryCommandRequest>
     {
         public AddCategoryValidator()
         {

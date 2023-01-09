@@ -37,11 +37,21 @@ namespace BookStore.Persistence.Repositories
                 query = Table.AsNoTracking();
             return await Table.FirstOrDefaultAsync(method);
         }
-        public async Task<T> GetByIdAsync(Guid id, bool tracking = true)
+
+
+        public async Task<T> GetByIdAsync(Guid id, bool tracking = true, params Expression<Func<T, object>>[] navigationPropertyPath)
         {
             var query = Table.AsQueryable();
             if (!tracking)
                 query = Table.AsNoTracking();
+            if (navigationPropertyPath != null)
+            {
+                foreach (var item in navigationPropertyPath)
+                {
+                    query.Include(item);
+                }
+
+            }
             return await query.FirstOrDefaultAsync(x => x.Id == id);
         }
     }

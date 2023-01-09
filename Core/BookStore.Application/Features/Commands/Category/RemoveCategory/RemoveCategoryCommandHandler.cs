@@ -16,8 +16,7 @@ namespace BookStore.Application.Features.Commands.Category.RemoveCategory
         public async Task<RemoveCategoryCommandResponse> Handle(RemoveCategoryCommandRequest request, CancellationToken cancellationToken)
         {
             var entity = await _readRepository.GetByIdAsync(request.Id);
-            entity.IsDeleted = true;
-            entity.IsActive = true;
+            entity.Remove();
             _writeRepository.Update(entity);
             await _writeRepository.SaveAsync();
             return new();

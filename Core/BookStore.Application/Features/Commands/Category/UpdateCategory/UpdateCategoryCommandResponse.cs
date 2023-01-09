@@ -1,6 +1,6 @@
 namespace BookStore.Application.Features.Commands.Category.UpdateCategory
 {
-    public class UpdateCategoryCommandResponse : ApiResponse<object>
+    public class UpdateCategoryCommandResponse : ApiResponse
     {
 
     }

@@ -4,7 +4,7 @@ using BookStore.Persistence.Contexts;
 
 namespace BookStore.Persistence.Repositories.AuthorRepository
 {
-    public class AuthorReadRepository : ReadRepository<AuthorImageFile>, IAuthorReadRepository
+    public class AuthorReadRepository : ReadRepository<Author>, IAuthorReadRepository
     {
         public AuthorReadRepository(BookStoreDbContext context) : base(context)
         {
