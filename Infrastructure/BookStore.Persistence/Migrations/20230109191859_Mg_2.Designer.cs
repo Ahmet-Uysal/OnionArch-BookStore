@@ -3,6 +3,7 @@ using System;
 using BookStore.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStore.Persistence.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class BookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230109191859_Mg_2")]
+    partial class Mg2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,21 +50,6 @@ namespace BookStore.Persistence.Migrations
                     b.HasIndex("BooksId");
 
                     b.ToTable("AuthorBook");
-                });
-
-            modelBuilder.Entity("BookImageFileBookStockKeepUnit", b =>
-                {
-                    b.Property<Guid>("BookImagesId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("BooksId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("BookImagesId", "BooksId");
-
-                    b.HasIndex("BooksId");
-
-                    b.ToTable("BookImageFileBookStockKeepUnit");
                 });
 
             modelBuilder.Entity("BookStockKeepUnitTranslator", b =>
@@ -117,6 +105,9 @@ namespace BookStore.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid?>("BookImageFileId")
+                        .HasColumnType("char(36)");
+
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("char(36)");
 
@@ -145,6 +136,8 @@ namespace BookStore.Persistence.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookImageFileId");
 
                     b.HasIndex("CategoryId");
 
@@ -690,6 +683,11 @@ namespace BookStore.Persistence.Migrations
                 {
                     b.HasBaseType("BookStore.Domain.Entities.File");
 
+                    b.Property<Guid?>("BookStockKeepUnitId")
+                        .HasColumnType("char(36)");
+
+                    b.HasIndex("BookStockKeepUnitId");
+
                     b.HasDiscriminator().HasValue("BookImageFile");
                 });
 
@@ -723,21 +721,6 @@ namespace BookStore.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BookImageFileBookStockKeepUnit", b =>
-                {
-                    b.HasOne("BookStore.Domain.Entities.BookImageFile", null)
-                        .WithMany()
-                        .HasForeignKey("BookImagesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BookStore.Domain.Entities.BookStockKeepUnit", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("BookStockKeepUnitTranslator", b =>
                 {
                     b.HasOne("BookStore.Domain.Entities.BookStockKeepUnit", null)
@@ -755,6 +738,10 @@ namespace BookStore.Persistence.Migrations
 
             modelBuilder.Entity("BookStore.Domain.Entities.Book", b =>
                 {
+                    b.HasOne("BookStore.Domain.Entities.BookImageFile", null)
+                        .WithMany("Books")
+                        .HasForeignKey("BookImageFileId");
+
                     b.HasOne("BookStore.Domain.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
@@ -878,6 +865,18 @@ namespace BookStore.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("BookStore.Domain.Entities.BookImageFile", b =>
+                {
+                    b.HasOne("BookStore.Domain.Entities.BookStockKeepUnit", null)
+                        .WithMany("BookImages")
+                        .HasForeignKey("BookStockKeepUnitId");
+                });
+
+            modelBuilder.Entity("BookStore.Domain.Entities.BookStockKeepUnit", b =>
+                {
+                    b.Navigation("BookImages");
+                });
+
             modelBuilder.Entity("BookStore.Domain.Entities.Category", b =>
                 {
                     b.Navigation("SubCategories");
@@ -894,6 +893,11 @@ namespace BookStore.Persistence.Migrations
                 });
 
             modelBuilder.Entity("BookStore.Domain.Entities.Publisher", b =>
+                {
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("BookStore.Domain.Entities.BookImageFile", b =>
                 {
                     b.Navigation("Books");
                 });
