@@ -1,5 +1,9 @@
 using System.Net;
 using BookStore.Application.Features.Commands.Category.AddCategory;
+using BookStore.Application.Features.Commands.Category.RemoveCategory;
+using BookStore.Application.Features.Commands.Category.SubscribeCategory;
+using BookStore.Application.Features.Commands.Category.SwitchCategoryActiveStatus;
+using BookStore.Application.Features.Commands.Category.UnsubscribeCategory;
 using BookStore.Application.Features.Commands.Category.UpdateCategory;
 using BookStore.Application.Features.Queries.Category.GetCategories;
 using BookStore.Application.Features.Queries.Category.GetCategoriesWithSub;
@@ -14,40 +18,25 @@ namespace BookStore.Api.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IBookReadRepository _rep;
-        public CategoryController(IMediator mediator, IBookReadRepository rep)
-        {
-            _mediator = mediator;
-            _rep = rep;
-        }
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] AddCategoryCommandRequest createProductCommandRequest)
-        {
-            // await _mediator.Send(createProductCommandRequest);
-            return StatusCode((int)HttpStatusCode.Created, await _mediator.Send(createProductCommandRequest));
-        }
-        [HttpGet(Name = "GetAllCategories")]
-        public async Task<IActionResult> Get()
-        {
-            // throw new Exception("patladı");
-            // await _mediator.Send(createProductCommandRequest);
-            // var l = _rep.GetAll().Include(x => x.Category);
-            // return Ok(l);
-            Thread.Sleep(1500);
-            return Ok(await _mediator.Send(new GetCategoriesQueryRequest()));
-        }
-        [HttpGet("[action]")]
-        // [Route("[action]")]
-        public async Task<IActionResult> GetAllCategoriesWithSub()
-        {
-            return Ok(await _mediator.Send(new GetCategoriesWithSubQueryRequest()));
-        }
+        public CategoryController(IMediator mediator) => _mediator = mediator;
 
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<IActionResult> CreateCategory([FromBody] AddCategoryCommandRequest createProductCommandRequest) => StatusCode((int)HttpStatusCode.Created, await _mediator.Send(createProductCommandRequest));
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> GetAllCategories() => Ok(await _mediator.Send(new GetCategoriesQueryRequest()));
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetAllCategoriesWithSub() => Ok(await _mediator.Send(new GetCategoriesWithSubQueryRequest()));
         [HttpPut("[action]")]
-        // [Route("[action]")]
-        public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommandRequest entity)
-        {
-            return Ok(await _mediator.Send(entity));
-        }
+        public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommandRequest entity) => Ok(await _mediator.Send(entity));
+        [HttpPut("[action]")]
+        public async Task<IActionResult> RemoveCategory([FromBody] RemoveCategoryCommandRequest entity) => Ok(await _mediator.Send(entity));
+        [HttpPut("[action]")]
+        public async Task<IActionResult> SwitchCategoryActiveStatus([FromBody] SwitchCategoryActiveStatusCommandRequest entity) => Ok(await _mediator.Send(entity));
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UnsubscribeCategory([FromBody] UnsubscribeCategoryCommandRequest entity) => Ok(await _mediator.Send(entity));
+        [HttpPut("[action]")]
+        public async Task<IActionResult> SubscribeCategory([FromBody] SubscribeCategoryCommandRequest entity) => Ok(await _mediator.Send(entity));
     }
 }
