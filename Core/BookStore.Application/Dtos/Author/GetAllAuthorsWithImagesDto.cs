@@ -9,6 +9,6 @@ namespace BookStore.Application.Dtos.Author
 {
     public class GetAllAuthorsWithImagesDto : BaseWriter
     {
-        public ICollection<AuthorImageFile>? AuthorImageFiles { get; set; }
+        public ICollection<GetAuthorImageFileDto>? AuthorImageFiles { get; set; }
     }
 }
