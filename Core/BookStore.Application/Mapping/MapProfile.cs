@@ -21,6 +21,7 @@ namespace BookStore.Application.Mapping
             _ = CreateMap<Author, GetAuthorsByIdWithImagesDto>();
             _ = CreateMap<Author, GetAllAuthorsWithAllPropertiesDto>();
             _ = CreateMap<Author, GetAuthorsByIdWithAllPropertiesDto>();
+            _ = CreateMap<AuthorImageFile, GetAuthorImageFileDto>();
         }
     }
 }

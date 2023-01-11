@@ -34,9 +34,9 @@ namespace BookStore.Persistence.Repositories
             return entity.State == EntityState.Deleted;
         }
 
-        public async Task<bool> RemoveAsync(string id)
+        public async Task<bool> RemoveAsync(Guid id)
         {
-            T? entity = await Table.FirstOrDefaultAsync(x => x.Id == Guid.Parse(id));
+            T? entity = await Table.FirstOrDefaultAsync(x => x.Id == id);
             return Remove(entity);
         }
         public bool RemoveRange(List<T> model)

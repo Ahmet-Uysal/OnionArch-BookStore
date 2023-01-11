@@ -7,6 +7,7 @@ using BookStore.Infrastructure.Enums;
 using BookStore.Infrastructure.Services;
 using BookStore.Infrastructure.Services.Configurations;
 using BookStore.Infrastructure.Services.Storage;
+using BookStore.Infrastructure.Services.Storage.Azure;
 using BookStore.Infrastructure.Services.Storage.Local;
 using BookStore.Infrastructure.Services.Token;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,7 @@ namespace BookStore.Infrastructure
                     _ = serviceCollection.AddScoped<IStorage, LocalStorage>();
                     break;
                 case StorageType.Azure:
+                    _ = serviceCollection.AddScoped<IStorage, AzureStorage>();
                     break;
                 case StorageType.AWS:
 

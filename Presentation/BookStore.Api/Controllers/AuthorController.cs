@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookStore.Application.Features.Commands.Author.CreateAuthor;
 using BookStore.Application.Features.Commands.Author.RemoveAuthor;
+using BookStore.Application.Features.Commands.Author.RemoveAuthorImageFile;
 using BookStore.Application.Features.Commands.Author.SwitchAuthorActiveState;
 using BookStore.Application.Features.Commands.Author.UpdateAuthor;
+using BookStore.Application.Features.Commands.Author.UploadAuthorImage;
 using BookStore.Application.Features.Queries.Author.GetAllAuthors;
 using BookStore.Application.Features.Queries.Author.GetAllAuthorsById;
 using BookStore.Application.Features.Queries.Author.GetAllAuthorsWithAllProperties;
@@ -62,5 +64,14 @@ namespace BookStore.Api.Controllers
         [HttpPut]
         [Route("[action]")]
         public async Task<IActionResult> RemoveAuthor([FromBody] RemoveAuthorCommandRequest entity) => Ok(await _mediator.Send(entity));
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UploadAuthorImage([FromQuery] UploadAuthorImageCommandRequest uploadProductImageCommandRequest)
+        {
+            uploadProductImageCommandRequest.Files = Request.Form.Files;
+
+            return Ok(await _mediator.Send(uploadProductImageCommandRequest));
+        }
+        [HttpPut("[action]")]
+        public async Task<IActionResult> RemoveAuthorImageFile([FromBody] RemoveAuthorImageFileCommandRequest removeAuthorImageFileCommandRequest) => Ok(await _mediator.Send(removeAuthorImageFileCommandRequest));
     }
 }

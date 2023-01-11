@@ -3,7 +3,9 @@ using BookStore.Api.Extensions;
 using BookStore.Application;
 using BookStore.Application.Validations;
 using BookStore.Infrastructure;
+using BookStore.Infrastructure.Enums;
 using BookStore.Infrastructure.Filters;
+using BookStore.Infrastructure.Services.Storage.Azure;
 using BookStore.Persistence;
 using FluentValidation.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,7 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(policy =>
 {
     policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
 }));
+builder.Services.AddStorage<AzureStorage>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
