@@ -1,7 +1,9 @@
 using AutoMapper;
 using BookStore.Application.Dtos.Author;
+using BookStore.Application.Dtos.Book;
 using BookStore.Application.Dtos.Category;
 using BookStore.Application.Features.Commands.Author.CreateAuthor;
+using BookStore.Application.Features.Commands.Book.CreateBook;
 using BookStore.Domain.Entities;
 
 namespace BookStore.Application.Mapping
@@ -12,6 +14,7 @@ namespace BookStore.Application.Mapping
         {
             _ = CreateMap<Category, GetCategoriesDto>();
             _ = CreateMap<Category, GetCategoriesIgnoreIncludes>();
+
             _ = CreateMap<CreateAuthorCommandRequest, Author>();
             _ = CreateMap<Author, GetAllAuthorDto>();
             _ = CreateMap<Author, GetAuthorsByIdDto>();
@@ -21,6 +24,13 @@ namespace BookStore.Application.Mapping
             _ = CreateMap<Author, GetAuthorsByIdWithImagesDto>();
             _ = CreateMap<Author, GetAllAuthorsWithAllPropertiesDto>();
             _ = CreateMap<Author, GetAuthorsByIdWithAllPropertiesDto>();
+
+            _ = CreateMap<CreateBookCommandRequest, Book>();
+            _ = CreateMap<Book, GetAllBookDto>();
+            _ = CreateMap<Book, GetAllBooksWithAllPropertiesDto>();
+            _ = CreateMap<Book, GetAllBooksWithAuthorsDto>();
+            _ = CreateMap<Book, GetAllBooksWithCategoriesDto>();
+
         }
     }
 }
