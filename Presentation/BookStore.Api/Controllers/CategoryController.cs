@@ -5,6 +5,7 @@ using BookStore.Application.Features.Commands.Category.SubscribeCategory;
 using BookStore.Application.Features.Commands.Category.SwitchCategoryActiveStatus;
 using BookStore.Application.Features.Commands.Category.UnsubscribeCategory;
 using BookStore.Application.Features.Commands.Category.UpdateCategory;
+using BookStore.Application.Features.Queries.Category.GetAllCategoriesWithBooks;
 using BookStore.Application.Features.Queries.Category.GetCategories;
 using BookStore.Application.Features.Queries.Category.GetCategoriesWithSub;
 using MediatR;
@@ -27,6 +28,10 @@ namespace BookStore.Api.Controllers
         public async Task<IActionResult> GetAllCategories() => Ok(await _mediator.Send(new GetCategoriesQueryRequest()));
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAllCategoriesWithSub() => Ok(await _mediator.Send(new GetCategoriesWithSubQueryRequest()));
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetAllCategoriesWithBooks() => Ok(await _mediator.Send(new GetAllCategoriesWithBooksQueryRequest()));
+
+
         [HttpPut("[action]")]
         public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommandRequest entity) => Ok(await _mediator.Send(entity));
         [HttpPut("[action]")]

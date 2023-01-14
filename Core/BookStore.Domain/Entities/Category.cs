@@ -10,5 +10,7 @@ namespace BookStore.Domain.Entities
 
         public Category? Parent { get; set; }
         public ICollection<Category>? SubCategories { get; set; }
+        public ICollection<Book>? Books { get; set; }
+
     }
 }
