@@ -8,7 +8,7 @@ using BookStore.Domain.Entities.Common;
 
 namespace BookStore.Application.Dtos.Book
 {
-    public class GetAllBooksWithAllPropertiesDto : BaseEntity
+    public class GetBookByIdWithAllPropertiesDto : BaseEntity
     {
         public string? Name { get; set; }
         public string? Description { get; set; }

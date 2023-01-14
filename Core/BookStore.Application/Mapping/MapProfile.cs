@@ -14,6 +14,7 @@ namespace BookStore.Application.Mapping
         {
             _ = CreateMap<Category, GetCategoriesDto>();
             _ = CreateMap<Category, GetCategoriesIgnoreIncludes>();
+            _ = CreateMap<Category, GetAllCategoriesWithBooksDto>();
 
             _ = CreateMap<CreateAuthorCommandRequest, Author>();
             _ = CreateMap<Author, GetAllAuthorDto>();
@@ -30,6 +31,12 @@ namespace BookStore.Application.Mapping
             _ = CreateMap<Book, GetAllBooksWithAllPropertiesDto>();
             _ = CreateMap<Book, GetAllBooksWithAuthorsDto>();
             _ = CreateMap<Book, GetAllBooksWithCategoriesDto>();
+            _ = CreateMap<Book, GetBookByIdDto>();
+            _ = CreateMap<Book, GetBookByIdWithAllPropertiesDto>();
+            _ = CreateMap<Book, GetBookByIdWithAuthorsDto>();
+            _ = CreateMap<Book, GetBookByIdWithCategoriesDto>();
+
+
 
         }
     }

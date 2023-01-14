@@ -48,9 +48,8 @@ namespace BookStore.Persistence.Repositories
             {
                 foreach (var item in navigationPropertyPath)
                 {
-                    query.Include(item);
+                    query = query.Include(item);
                 }
-
             }
             return await query.FirstOrDefaultAsync(x => x.Id == id);
         }
