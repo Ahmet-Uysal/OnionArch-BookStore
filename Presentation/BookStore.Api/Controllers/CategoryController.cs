@@ -30,8 +30,6 @@ namespace BookStore.Api.Controllers
         public async Task<IActionResult> GetAllCategoriesWithSub() => Ok(await _mediator.Send(new GetCategoriesWithSubQueryRequest()));
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAllCategoriesWithBooks() => Ok(await _mediator.Send(new GetAllCategoriesWithBooksQueryRequest()));
-
-
         [HttpPut("[action]")]
         public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommandRequest entity) => Ok(await _mediator.Send(entity));
         [HttpPut("[action]")]

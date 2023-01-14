@@ -47,6 +47,7 @@ namespace BookStore.Api.Controllers
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetAllBooksWithAuthors([FromBody] GetAllBooksWithAuthorsQueryRequest entity) => Ok(await _mediator.Send(entity));
+        [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetAllBooksWithAllProperties([FromBody] GetAllBooksWithAllPropertiesQueryRequest entity) => Ok(await _mediator.Send(entity));
 
