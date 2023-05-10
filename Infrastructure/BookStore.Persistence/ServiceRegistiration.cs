@@ -29,6 +29,10 @@ using BookStore.Persistence.Repositories.TranslatorRepository;
 using BookStore.Persistence.Repositories.UserBookStockKeepUnitRepository;
 using BookStore.Persistence.Repositories.AuthorImageFileRepository;
 using Microsoft.Extensions.Configuration;
+using BookStore.Application.Abstractions.Services.Authentications;
+using BookStore.Application.Abstractions.Services;
+using BookStore.Application.Services;
+using BookStore.Persistence.Services;
 
 namespace BookStore.Persistence
 {
@@ -38,8 +42,9 @@ namespace BookStore.Persistence
         {
             _ = services.AddDbContext<BookStoreDbContext>(options =>
             {
-                string? connectionString = configuration.GetConnectionString("MySql");
-                _ = options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                string? connectionString = configuration.GetConnectionString("SqlServer");
+                options.UseSqlServer(connectionString);
+                
             }
         );
             _ = services.AddIdentity<User, Role>(options =>
@@ -85,6 +90,16 @@ namespace BookStore.Persistence
 
             _ = services.AddScoped<IUserBookStockKeepUnitReadRepository, UserBookStockKeepUnitReadRepository>();
             _ = services.AddScoped<IUserBookStockKeepUnitWriteRepository, UserBookStockKeepUnitWriteRepository>();
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IInternalAuthentication, AuthService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IAuthorizationEndpointService, AuthorizationEndpointService>();
+            services.AddScoped<IEndpointReadRepository, EndpointReadRepository>();
+            services.AddScoped<IEndpointWriteRepository, EndpointWriteRepository>();
+            services.AddScoped<IMenuReadRepository, MenuReadRepository>();
+            _ = services.AddScoped<IMenuWriteRepository, MenuWriteRepository>();
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 
 namespace BookStore.Application.Repositories
 {
-    public interface IReadRepository<T>
+    public interface IReadRepository<T>:IRepository<T> where T : class
     {
         IQueryable<T> GetAll(bool tracking = true);
         IQueryable<T> GetWhere(Expression<Func<T, bool>> method, bool tracking = true);

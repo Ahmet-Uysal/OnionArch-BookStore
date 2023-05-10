@@ -8,7 +8,7 @@ namespace BookStore.Application
     {
         public static void AddApplicationServices(this IServiceCollection services)
         {
-            _ = services.AddMediatR(Assembly.GetExecutingAssembly());
+            _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
             _ = services.AddAutoMapper(Assembly.GetExecutingAssembly());
         }
     }

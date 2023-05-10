@@ -8,9 +8,11 @@ namespace BookStore.Persistence.Contexts
 {
     public class BookStoreDbContext : IdentityDbContext<User, Role, Guid>
     {
+       
         public BookStoreDbContext(DbContextOptions options) : base(options)
         {
         }
+       
 
         public DbSet<Author> Authors { get; set; }
         public DbSet<AuthorImageFile> AuthorImageFiles { get; set; }
