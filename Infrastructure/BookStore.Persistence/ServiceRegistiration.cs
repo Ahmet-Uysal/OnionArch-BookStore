@@ -43,7 +43,7 @@ namespace BookStore.Persistence
             _ = services.AddDbContext<BookStoreDbContext>(options =>
             {
                 string? connectionString = configuration.GetConnectionString("SqlServer");
-                options.UseSqlServer(connectionString);
+                options.UseNpgsql(connectionString);
                 
             }
         );
